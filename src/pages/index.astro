@@ -1,29 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Image } from "astro:assets";
-import headerImage from "../images/header_1-2_2.png";
-import iconImage from "../images/20260310_icon.png";
+import Profile from "../components/Profile.astro";
+import SNSButton from "../components/SNSButton.astro";
+
+import x_logo from "../logos/x-logo.svg";
+import discord_logo from "../logos/discord-logo.svg";
+import github_logo from "../logos/github-logo.svg";
+import qiita_logo from "../logos/qiita-logo.svg";
+
+const links = [
+	{ link: "https://x.com/dora_natamoko", logo: x_logo, title: "@dora_natamoko", description: "日常と創作のツイートをぼちぼちやってます"},
+	{ link: "https://discordapp.com/users/1305883677447684197", logo: discord_logo, title: "ntdmkmkmkmk8059", description: "基本的にこのDiscordに張り付いてます"},
+	{ link: "https://github.com/dora-ntmk", logo: github_logo, title: "dora-ntmk", description: "あんまり草は生やせてません"},
+	{ link: "https://qiita.com/dora-ntmk", logo: qiita_logo, title: "@dora-ntmk", description: "たまーに書きます"}
+]
 ---
 
 <Layout title="ホーム｜どらさいと">
-	<section class="profile">
-		<div class="header-image">
-			<Image src={headerImage} alt="Header Image" class="max-w-[calc(100%+24px)] -mx-3" />
-		</div>
-		<div class="profile-content">
-			<Image src={iconImage} alt="Icon Image" class="max-w-32 max-h-32 w-full rounded-full ml-2 mt-[-11%]" />
-			<h1 class="text-3xl font-bold mt-3">どら</h1>
-			<p class="text-sm text-gray-500 mt-0.5">@dora_ntmk</p>
-			<p class="text-md mt-2">
-				2007-02-21生
-				<br />
-				神奈川工科大学 情報学部 情報メディア学科
-			</p>
-			<p class="text-md mt-2">
-				デザイン🎨、動画編集📹、写真📸、Web制作🌐……
-				<br />
-				広く創作活動を気ままにやってます
-			</p>
-		</div>
+	<Profile />
+	<section class="links flex flex-col gap-y-2 my-3">
+		{links.map(item => <SNSButton {...item} />)}
 	</section>
 </Layout>

@@ -1,0 +1,24 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+	link: string;
+	logo: ImageMetadata;
+	title: string;
+	description: string;
+}
+
+const { link, logo, title, description } = Astro.props;
+---
+
+<a href={link} target="_blank" class="flex ring-1 ring-gray-200 rounded-md duration-200 hover:bg-black/5">
+	<div class="logo flex items-center">
+		<Image src={logo} alt="x_logo" class="ml-6 mr-4" />
+	</div>
+	<div class="description">
+		<!-- <h1 class="text-lg font-bold mt-2">X（旧Twitter）</h1> -->
+		 <h1 class="text-lg font-bold mt-2">{title}</h1>
+		<p class="text-sm text-gray-500 mb-2.5">{description}</p>
+	</div>
+</a>

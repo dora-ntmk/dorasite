@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import headerImage from "../images/header_1-2_2.png";
+import iconImage from "../images/20260310_icon.png";
+---
+
+<section class="profile">
+	<div class="header-image">
+		<Image src={headerImage} alt="Header Image" class="max-w-[calc(100%+24px)] -mx-3" />
+	</div>
+	<div class="profile-content">
+		<Image src={iconImage} alt="Icon Image" class="max-w-32 max-h-32 w-full rounded-full ml-2 mt-[-11%]" />
+		<h1 class="text-2xl font-bold mt-3">どら</h1>
+		<p class="text-sm text-gray-500 mt-0.5">@dora_ntmk</p>
+		<p class="text-md mt-2">
+			2007-02-21生
+			<br />
+			神奈川工科大学 情報学部 情報メディア学科
+		</p>
+		<p class="text-md mt-2">
+			デザイン🎨、動画編集📹、写真📸、Web制作🌐……
+			<br />
+			広く創作活動を気ままにやってます
+		</p>
+	</div>
+</section>
