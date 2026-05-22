@@ -1,0 +1,13 @@
+---
+import { Image } from "astro:assets";
+
+import doraIcon from "../logos/dora_icon.svg";
+---
+
+<nav class="w-72 py-2 flex flex-col">
+  <section class="logo">
+    <a href="index.astro" class="inline-block rounded-lg duration-200 hover:bg-black/5">
+      <Image src={doraIcon} alt="どら アイコン" class="w-12 h-auto m-3" /> 
+    </a>
+  </section>
+</nav>
