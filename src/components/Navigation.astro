@@ -39,6 +39,7 @@ const buttons = [
       link.addEventListener('click', e => {
         if (location.pathname === '/') {
           e.preventDefault();
+          history.pushState(null, '', '/');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       });
