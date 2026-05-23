@@ -1,0 +1,26 @@
+---
+interface Props {
+	link: string;
+	avater: string;
+	name: string;
+	description: string;
+	tags: string[];
+}
+
+const { link, avater, name, description, tags } = Astro.props;
+---
+
+<a href={link} target="_blank" class="flex ring-1 ring-gray-200 rounded-md duration-200 hover:bg-(--color-dorablue)/5 hover:ring-(--color-dorablue)">
+	<div class="logo flex items-center ml-5 mr-4 my-4 min-w-16 max-w-16">
+		<img src={avater} alt="logo" class="rounded-full" />
+	</div>
+	<div class="description mr-3">
+		 <h1 class="text-lg font-bold mt-2.5">{name}</h1>
+		<p class="text-sm text-gray-500">{description}</p>
+		<div class="flex flex-wrap gap-1 mt-1.5 mb-3">
+			{tags.map(tag => (
+				<span class="text-xs px-2 py-0.5 rounded-full bg-(--color-dorablue)/15 text-(--color-dorablue)">{tag}</span>
+			))}
+		</div>
+	</div>
+</a>

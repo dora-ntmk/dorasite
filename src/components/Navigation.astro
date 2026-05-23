@@ -19,7 +19,7 @@ const buttons = [
 <nav class="sticky overflow-y-auto top-0 w-64 h-lvh py-3 px-4 flex flex-col justify-between border-l-1 border-gray-200 bg-white">
   <div>
     <section class="logo">
-      <a href="/" class="inline-block rounded-lg duration-200 hover:bg-(--color-dorablue)/5">
+      <a href="/" data-home-link class="inline-block rounded-lg duration-200 hover:bg-(--color-dorablue)/5">
         <Image src={doraIcon} alt="どら アイコン" class="w-14 h-auto m-3" /> 
       </a>
     </section>
@@ -35,7 +35,7 @@ const buttons = [
 
 <script>
   function setup() {
-    document.querySelectorAll('[data-nav-buttons] a[href="/"]').forEach(link => {
+    document.querySelectorAll('[data-home-link], [data-nav-buttons] a[href="/"]').forEach(link => {
       link.addEventListener('click', e => {
         if (location.pathname === '/') {
           e.preventDefault();

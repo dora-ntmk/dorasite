@@ -1,7 +1,62 @@
 ---
+import FriendLinkButton from "./FriendLinkButton.astro";
 
+const friends = [
+  { 
+    link: "https://x.com/Mirin_2468", avater: "https://unavatar.io/x/Mirin_2468",
+    name: "みりん星", description: "五弦ベース使いでポテト教の多忙仲間　サイトつくるらしい", 
+    tags:["KAIT", "D科", "25生", "KAIT VR", "放送映像研究部", "ポテト"]
+  },
+  { 
+    link: "https://x.com/mashu180603", avater: "https://unavatar.io/x/mashu180603",
+    name: "ましゅー", description: "ネットミーム男すぎる　尊敬", 
+    tags:["KAIT", "D科", "25生"]
+  },
+  { 
+    link: "https://x.com/AKL_movediar", avater: "https://unavatar.io/x/AKL_movediar",
+    name: "アキラ(A-KIlA)", description: "放映研のぶちょさん　映像コンテンツ頑張ってる", 
+    tags:["KAIT", "D科", "24生", "放送映像研究部"]
+  },
+	{ 
+    link: "https://hiiragi-miu.com/", avater: "https://unavatar.io/x/M_Sakura479",
+    name: "美羽", description: "スリリングな運転をする人がお好きなようね", 
+    tags:["KAIT", "N科", "25生", "nwlab", "お給料日"]
+  },
+  { 
+    link: "https://sakanadayo.f5.si/", avater: "https://0.gravatar.com/avatar/e7f7db0eab104fe15fceeb6c7fd3b1abce7f7aa6d7c907fc8d9d9f3577655e2a?size=512&d=initials",
+    name: "sakana", description: "お給料日を盛り上げてしまった人", 
+    tags:["KAIT", "N科", "25生", "nwlab", "お給料日"]
+  },
+  { 
+    link: "https://b4mboo.net/", avater: "https://unavatar.io/github/b4mbo-o",
+  name: "ばんぶー", description: "あいどるおたく！！！", 
+    tags:["KAIT", "N科", "26生", "nwlab", "お給料日"]
+  },
+  { 
+    link: "https://polythos.net/", avater: "https://unavatar.io/x/Polythos",
+    name: "ぽりとす", description: "ﾛｰﾎﾟﾘｸﾝｶﾜｲｲﾔｯﾀｰ", 
+    tags:["UEC（電通大）", "Ⅰ類", "25生", "LiSA", "エレ部"]
+  },
+  { 
+    link: "https://toramutton.me/", avater: "https://unavatar.io/x/ToraMutton",
+    name: "トラマト", description: "穏やか起床　キショ起床", 
+    tags:["UEC（電通大）", "Ⅰ類", "25生", "技育"]
+  },
+  { 
+    link: "https://x.com/hud_labo", avater: "https://unavatar.io/x/hud_labo",
+    name: "はど", description: "メディア行ったと思ったら工学部だった件", 
+    tags:["TUT（東京工科大）", "ES（工学部機械工学科）", "25生", "LiSA", "エレ部"]
+  },
+  { 
+    link: "https://x.com/fail0213", avater: "https://unavatar.io/x/fail0213",
+    name: "ふぇいる", description: "ふぇいる？もうすぐ授業が始まります。すぐ来れますか？もっと早く起きれませんか？", 
+    tags:["LiSA", "エレ部"]
+  },
+]
 ---
 
 <h2 class="text-2xl font-bold">りんくとか</h2>
 <p class="text-sm text-gray-500 mt-0.5">Links</p>
-<p class="my-8 text-center">掲載準備中…</p>
+<div class="flex flex-col gap-y-2 mt-3">
+  {friends.map(item => <FriendLinkButton {...item} />)}
+</div>
