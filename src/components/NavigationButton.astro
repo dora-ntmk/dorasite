@@ -11,7 +11,7 @@ interface Props {
 const { link, icon, text } = Astro.props;
 ---
 
-<a href={link} class="inline-block w-full rounded-lg duration-200 hover:bg-black/5">
+<a href={link} class="inline-block w-full rounded-lg duration-200 hover:bg-(--color-dorablue)/5 hover:text-(--color-dorablue)">
 	<div class="flex">
 		<Image src={icon} alt="ホーム アイコン" class="w-8 h-auto m-2 ml-3" />
 		<p class="text-xl font-bold my-auto ml-2">{text}</p>
