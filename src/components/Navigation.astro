@@ -3,27 +3,27 @@ import { Image } from "astro:assets";
 import NavigationButton from "./NavigationButton.astro";
 
 import doraIcon from "../logos/dora_icon.svg";
-import homeIcon from "../icons/icon_home.svg";
-import linkIcon from "../icons/icon_link.svg";
-import businessIcon from "../icons/icon_business.svg";
-import userIcon from "../icons/icon_user.svg";
+import homeIcon from "../icons/icon_home.svg?raw";
+import linkIcon from "../icons/icon_link.svg?raw";
+import businessIcon from "../icons/icon_business.svg?raw";
+import userIcon from "../icons/icon_user.svg?raw";
 
 const buttons = [
   { link: "/", icon: homeIcon, text: "ほーむ" },
-  { link: "/", icon: linkIcon, text: "りんくとか" },
-  { link: "/", icon: businessIcon, text: "わーくす" },
-  { link: "/", icon: userIcon, text: "ぷろふぃーる" }
+  { link: "/#works", icon: businessIcon, text: "わーくす" },
+  { link: "/#links", icon: linkIcon, text: "りんくとか" },
+  { link: "/#moreProfile", icon: userIcon, text: "ぷろふぃーる" }
 ]
 ---
 
-<nav class="sticky overflow-y-auto top-0 w-64 h-lvh py-3 px-4 flex flex-col justify-between border-l-1 border-gray-200">
+<nav class="sticky overflow-y-auto top-0 w-64 h-lvh py-3 px-4 flex flex-col justify-between border-l-1 border-gray-200 bg-white">
   <div>
     <section class="logo">
-      <a href="/" class="inline-block rounded-lg duration-200 hover:bg-black/5">
+      <a href="/" class="inline-block rounded-lg duration-200 hover:bg-(--color-dorablue)/5">
         <Image src={doraIcon} alt="どら アイコン" class="w-14 h-auto m-3" /> 
       </a>
     </section>
-    <section class="btn flex flex-col gap-1 w-full mt-2 py-3 border-y-1 border-gray-200">
+    <section class="btn flex flex-col gap-1 w-full mt-2 py-3 border-y-1 border-gray-200" data-nav-buttons>
       {buttons.map(item => <NavigationButton {...item} />)}
     </section>
   </div>
@@ -32,3 +32,17 @@ const buttons = [
     <p class="text-gray-500">&copy; 2026 どら</p>
   </div>
 </nav>
+
+<script>
+  function setup() {
+    document.querySelectorAll('[data-nav-buttons] a[href="/"]').forEach(link => {
+      link.addEventListener('click', e => {
+        if (location.pathname === '/') {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+  document.addEventListener('astro:page-load', setup);
+</script>

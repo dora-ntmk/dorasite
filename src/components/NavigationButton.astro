@@ -1,10 +1,7 @@
 ---
-import type { ImageMetadata } from "astro";
-import { Image } from "astro:assets";
-
 interface Props {
 	link: string;
-	icon: ImageMetadata;
+	icon: string;
 	text: string;
 }
 
@@ -13,7 +10,7 @@ const { link, icon, text } = Astro.props;
 
 <a href={link} class="inline-block w-full rounded-lg duration-200 hover:bg-(--color-dorablue)/5 hover:text-(--color-dorablue)">
 	<div class="flex">
-		<Image src={icon} alt="ホーム アイコン" class="w-8 h-auto m-2 ml-3" />
+		<span class="w-8 h-auto m-2 ml-3 shrink-0" set:html={icon} />
 		<p class="text-xl font-bold my-auto ml-2">{text}</p>
 	</div>
 </a>

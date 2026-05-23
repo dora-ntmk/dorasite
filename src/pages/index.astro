@@ -3,6 +3,10 @@ import Layout from "../layouts/Layout.astro";
 import Profile from "../components/Profile.astro";
 import SNSButton from "../components/SNSButton.astro";
 
+import Works from "../components/Works.astro";
+import Links from "../components/Links.astro";
+import MoreProfile from "../components/MoreProfile.astro";
+
 import x_logo from "../logos/x-logo.svg";
 import discord_logo from "../logos/discord-logo.svg";
 import github_logo from "../logos/github-logo.svg";
@@ -17,8 +21,21 @@ const links = [
 ---
 
 <Layout title="ホーム｜どらさいと">
-	<Profile />
-	<section class="links flex flex-col gap-y-2 my-3">
-		{links.map(item => <SNSButton {...item} />)}
-	</section>
+	<div class="flex flex-col">
+		<section id="top">
+			<Profile />
+			<section class="links flex flex-col gap-y-2 my-3">
+				{links.map(item => <SNSButton {...item} />)}
+			</section>
+		</section>
+		<section id="works" class="mt-3 pt-3 border-t-1 border-gray-200">
+			<Works />
+		</section>
+		<section id="links" class="mt-3 pt-3 border-t-1 border-gray-200">
+			<Links />
+		</section>
+		<section id="moreProfile" class="mt-3 pt-3 border-t-1 border-gray-200">
+			<MoreProfile />
+		</section>
+	</div>
 </Layout>
