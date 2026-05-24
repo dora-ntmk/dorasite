@@ -24,14 +24,28 @@ const { title, description = "どらさいと" } = Astro.props;
     <ClientRouter />
   </head>
   <body class="bg-white">
-    <div class="hidden lg:block fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      <iframe
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-[56.25vw] min-h-screen min-w-[177.78vh] border-0"
-        src="https://www.youtube.com/embed/iHzCkvl_dOw?controls=0&autoplay=1&mute=1&loop=1&playlist=iHzCkvl_dOw"
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      ></iframe>
-    </div>
+    <div id="bg-video" class="hidden lg:block fixed inset-0 -z-10 overflow-hidden pointer-events-none" transition:persist></div>
+    <script>
+      const mq = window.matchMedia('(min-width: 1024px)');
+
+      function updateVideo() {
+        const container = document.getElementById('bg-video');
+        if (!container) return;
+        if (mq.matches && !container.querySelector('iframe')) {
+          const iframe = document.createElement('iframe');
+          iframe.className = 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-[56.25vw] min-h-screen min-w-[177.78vh] border-0';
+          iframe.src = 'https://www.youtube.com/embed/iHzCkvl_dOw?controls=0&autoplay=1&mute=1&loop=1&playlist=iHzCkvl_dOw';
+          iframe.title = 'YouTube video player';
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+          container.appendChild(iframe);
+        } else if (!mq.matches) {
+          container.querySelector('iframe')?.remove();
+        }
+      }
+
+      mq.addEventListener('change', updateVideo);
+      document.addEventListener('astro:page-load', updateVideo);
+    </script>
     <div class="fixed inset-0 bg-white/90 backdrop-blur-xl pointer-events-none" style="z-index: -1;"></div>
     <div class="min-h-screen min-[600px]:flex justify-center text-gray-900 antialiased">
       <Navigation />

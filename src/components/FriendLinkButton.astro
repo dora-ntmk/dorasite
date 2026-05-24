@@ -10,7 +10,7 @@ interface Props {
 const { link, avater, name, description, tags } = Astro.props;
 ---
 
-<a href={link} target="_blank" class="flex ring-1 ring-gray-200 rounded-md duration-200 hover:bg-(--color-dorablue)/5 hover:ring-(--color-dorablue)">
+<a href={link} target="_blank" class="flex ring-1 ring-gray-200 rounded-md duration-200 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-(--color-dorablue)/5 [@media(hover:hover)_and_(pointer:fine)]:hover:ring-(--color-dorablue)">
 	<div class="logo flex items-center mx-2.5 min-[600px]:ml-5 min-[600px]:mr-4 my-4 min-w-14 max-w-14 min-[600px]:min-w-16 min-[600px]:max-w-16">
 		<img src={avater} alt={name + "のアイコン"} class="rounded-full" />
 	</div>

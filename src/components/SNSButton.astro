@@ -13,7 +13,7 @@ interface Props {
 const { link, logo, title, description, color } = Astro.props;
 ---
 
-<a href={link} target="_blank" style={`--btn-color: ${color}`} class="flex ring-1 ring-gray-200 rounded-md duration-200 hover:bg-[var(--btn-color)]/5 hover:ring-[var(--btn-color)]">
+<a href={link} target="_blank" style={`--btn-color: ${color}`} class="flex ring-1 ring-gray-200 rounded-md duration-200 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[var(--btn-color)]/5 [@media(hover:hover)_and_(pointer:fine)]:hover:ring-[var(--btn-color)]">
 	<div class="logo flex items-center">
 		<Image src={logo} alt="icon" class="ml-6 mr-4 min-w-8 max-w-8" />
 	</div>
