@@ -1,7 +1,20 @@
 ---
+interface Props {
+  imgSrc: string;
+  title: string;
+  date: string;
+  url: string;
+}
 
+const { imgSrc, title, date, url } = Astro.props;
 ---
 
-<div class="rounded-md bg-gray-600 aspect-square">
-  <!-- ここに画像を入れるよ -->
+<div class="relative rounded-md bg-gray-600 aspect-square">
+  <a href={url} target="_blank">
+    <img src={imgSrc} class="w-full h-full object-cover rounded-md" />
+    <div class="absolute inset-0 bg-black/50 rounded-md flex flex-col items-center justify-center duration-200 opacity-0 [@media(hover:hover)_and_(pointer:fine)]:hover:opacity-100 [@media(hover:hover)_and_(pointer:fine)]:hover:backdrop-blur-xs">
+      <span class="text-white font-bold text-lg">{title}</span>
+      <span class="text-gray-300 text-xs">{date}</span>
+    </div>
+  </a>
 </div>
