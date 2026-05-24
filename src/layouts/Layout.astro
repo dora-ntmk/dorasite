@@ -24,7 +24,7 @@ const { title, description = "どらさいと" } = Astro.props;
     <ClientRouter />
   </head>
   <body class="bg-white">
-    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+    <div class="hidden lg:block fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       <iframe
         class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-[56.25vw] min-h-screen min-w-[177.78vh] border-0"
         src="https://www.youtube.com/embed/iHzCkvl_dOw?controls=0&autoplay=1&mute=1&loop=1&playlist=iHzCkvl_dOw"
@@ -33,7 +33,7 @@ const { title, description = "どらさいと" } = Astro.props;
       ></iframe>
     </div>
     <div class="fixed inset-0 bg-white/90 backdrop-blur-xl pointer-events-none" style="z-index: -1;"></div>
-    <div class="min-h-screen flex justify-center text-gray-900 antialiased">
+    <div class="min-h-screen min-[600px]:flex justify-center text-gray-900 antialiased">
       <Navigation />
       <main class="flex-1 max-w-[624px] w-full px-3 border-x-1 border-gray-200 border-gray-200 bg-white">
         <slot />

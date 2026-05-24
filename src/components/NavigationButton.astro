@@ -8,9 +8,9 @@ interface Props {
 const { link, icon, text } = Astro.props;
 ---
 
-<a href={link} class="inline-block w-full rounded-lg duration-200 hover:bg-(--color-dorablue)/5 hover:text-(--color-dorablue)">
-	<div class="flex">
-		<span class="w-8 h-auto m-2 ml-3 shrink-0" set:html={icon} />
-		<p class="text-xl font-bold my-auto ml-2">{text}</p>
+<a href={link} class="inline-block max-[599px]:my-auto min-[600px]:w-full rounded-lg duration-200 hover:bg-(--color-dorablue)/5 hover:text-(--color-dorablue)">
+	<div class="min-[600px]:flex">
+		<span class="w-8 h-8 flex items-center justify-center min-[600px]:m-2 max-[919px]:ml-2 min-[920px]:ml-3 shrink-0" set:html={icon} />
+		<p class="text-xl font-bold my-auto ml-2 max-[919px]:hidden">{text}</p>
 	</div>
 </a>
