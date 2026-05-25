@@ -8,12 +8,10 @@ type Props = {
 export default function WorksCard({ imgSrc, title, date, url }: Props) {
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
-      <div className="relative rounded-md aspect-square">
-        <img src={imgSrc} className="w-full h-full object-cover rounded-md" />
-        <div className="absolute inset-0 bg-black/50 rounded-md p-3 flex flex-col items-center justify-center text-center duration-200 opacity-0 [@media(hover:hover)_and_(pointer:fine)]:hover:opacity-100 [@media(hover:hover)_and_(pointer:fine)]:hover:backdrop-blur-xs">
-          <span className="text-white font-bold text-lg">{title}</span>
-          <span className="text-gray-300 text-sm">{date}</span>
-        </div>
+      <div className="flex flex-col rounded-md aspect-[7/4] ring-1 ring-gray-200 duration-200 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-(--color-dorablue)/5 [@media(hover:hover)_and_(pointer:fine)]:hover:ring-(--color-dorablue)">
+        <img src={imgSrc} className="w-auto h-full object-cover rounded-sm mt-1 mx-1" />
+        <span className="font-bold text-lg mx-1.5">{title}</span>
+        <span className="text-gray-500 text-sm mx-1.5 mb-1.5">{date}</span>
       </div>
     </a>
   );
