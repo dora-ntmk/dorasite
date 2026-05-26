@@ -25,12 +25,19 @@ function formatDate(dateStr: string) {
 
 export default function Works() {
   const [items, setItems] = useState<WorksContent[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/api/works')
-      .then(r => r.json())
+      .then(r => {
+        if (!r.ok) throw new Error(`TTP ${r.status}`);
+        return r.json();
+      })
       .then(setItems)
-      .catch(() => setItems([]));
+      .catch(err => {
+        console.error('Failed to fetch works:', err);
+        setError('データの取得に失敗');
+      });
   }, []);
 
   return (
