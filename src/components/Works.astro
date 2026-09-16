@@ -1,0 +1,45 @@
+---
+import { createClient } from 'microcms-js-sdk';
+import WorksCard from './WorksCard.astro';
+
+type WorksContent = {
+  thumbnail: { url: string };
+  title: string;
+  date: string;
+  url: string;
+};
+
+// 作品データはビルド時に取得するため、更新後は再デプロイが必要です。
+const client = createClient({
+  serviceDomain: 'dorashark',
+  apiKey: import.meta.env.SECRET_SHARK_API_KEY ?? '',
+});
+
+const items = await client.getAllContents<WorksContent>({ endpoint: 'works' })
+  .catch(() => {
+    console.warn('作品データを取得できなかったため、作品一覧を空にして表示します。');
+    return [];
+  });
+
+function formatDate(dateStr: string) {
+  return new Date(dateStr).toLocaleDateString('ja-JP', {
+    timeZone: 'Asia/Tokyo',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  });
+}
+---
+
+<h2 class="text-2xl font-bold">わーくす</h2>
+<p class="text-sm text-gray-500 mt-0.5 mb-3">Works</p>
+<section class="grid grid-cols-2 min-[600px]:grid-cols-3 gap-3">
+  {items.map(item => (
+    <WorksCard
+      imgSrc={item.thumbnail.url}
+      title={item.title}
+      date={formatDate(item.date)}
+      url={item.url}
+    />
+  ))}
+</section>
