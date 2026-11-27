@@ -8,12 +8,24 @@ interface Props {
 	title: string;
 	description: string;
 	color: string;
+	isDisable?: boolean;
 }
 
-const { link, logo, title, description, color } = Astro.props;
+const { link, logo, title, description, color, isDisable = false } = Astro.props;
 ---
 
-<a href={link} target="_blank" style={`--btn-color: ${color}`} class="flex ring-1 ring-gray-200 rounded-md duration-200 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[var(--btn-color)]/5 [@media(hover:hover)_and_(pointer:fine)]:hover:ring-[var(--btn-color)]">
+<a href={isDisable ? undefined : link}
+	target="_blank"
+	style={`--btn-color: ${color}`}
+	class:list={[
+		// 通常時
+		"flex ring-1 rounded-md duration-200",
+		// isDisableにより分岐
+		isDisable
+			? "bg-gray-200 ring-gray-400 opacity-50"
+			: "ring-gray-200 [@media(hover:hover)_and_(pointer:fine)]:hover:bg-[var(--btn-color)]/5 [@media(hover:hover)_and_(pointer:fine)]:hover:ring-[var(--btn-color)]"
+	]}
+>
 	<div class="logo flex items-center">
 		<Image src={logo} alt="icon" class="ml-6 mr-4 min-w-8 max-w-8" />
 	</div>
